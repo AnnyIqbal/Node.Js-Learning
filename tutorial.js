@@ -116,18 +116,51 @@
 
 /*****************rendering json data*************** */
 
+// var http = require('http');
+// var fs = require('fs');
+
+// var server = http.createServer(function(req, res) { // res is a writeable stream
+//     res.writeHead(200, {'Content-Type' : 'application/json'}); 
+//     var myObj = {
+//         name: 'Anny',
+//         gender: 'female',
+//         lives: 'Karachi'
+//     }
+//     res.end(JSON.stringify(myObj)); // obj sent to client
+// });
+
+// server.listen(3000);
+// console.log('listening on port 3000');
+
+/********************Routing********************** */
+
 var http = require('http');
 var fs = require('fs');
 
-var server = http.createServer(function(req, res) { // res is a writeable stream
-    res.writeHead(200, {'Content-Type' : 'application/json'}); 
-    var myObj = {
-        name: 'Anny',
-        gender: 'female',
-        lives: 'Karachi'
+var server = http.createServer( function(req, res){
+    console.log(req.url);
+    switch(req.url) {
+        case '/home' || '/': {
+            res.writeHead(202, {'Content-Type': 'text/html'});
+            fs.createReadStream(__dirname + '/home.html').pipe(res);
+            break;
+        }
+        case '/about': {
+            res.writeHead(202, {'Content-Type': 'text/html'});
+            fs.createReadStream(__dirname + '/about.html').pipe(res);
+            break;
+        }
+        case '/contact': {
+            res.writeHead(202, {'Content-Type': 'text/html'});
+            fs.createReadStream(__dirname + '/contact.html').pipe(res);
+            break;
+        }
+        default: {
+            res.writeHead(202, {'Content-Type': 'text/html'});
+            fs.createReadStream(__dirname + '/error.html').pipe(res);
+        }
     }
-    res.end(JSON.stringify(myObj)); // obj sent to client
 });
 
 server.listen(3000);
-console.log('listening on port 3000');
+console.log('server is running on port: 3000');
