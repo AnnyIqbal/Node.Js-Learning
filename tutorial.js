@@ -100,7 +100,7 @@
 
 // readStream.pipe(writeStream); // piping from readStream into the writeStream
 
-/*****************Assignment 1: reading from stream and piping data down to client*************** */
+/*****************reading from stream and piping data down to client*************** */
 
 // var http = require('http');
 // var fs = require('fs');
@@ -132,7 +132,7 @@
 // server.listen(3000);
 // console.log('listening on port 3000');
 
-/********************Routing********************** */
+/******************** Ass # 01: Routing********************** */
 
 var http = require('http');
 var fs = require('fs');
