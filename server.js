@@ -1,44 +1,67 @@
-/********************Ass 01: Routing********************** */
+/*********tutorial # 23***********Express routing********************** */
 
-// var http = require('http');
-// var fs = require('fs');
+// var express = require('express');
 
-// function routeToUrl(url) {
-//     if(url !== '/favicon.ico') {
-//         if(url !== '/home' && url !== '/about' && url !== '/contact') {
-//             return fs.createReadStream(`${__dirname}/error.html`);
-//         }
-//         else if(url === '/home' || url === '/about' || url === '/contact') {
-//             return fs.createReadStream(`${__dirname}${url}.html`);
-//         }
-//     }
-// }
+// var app = express();
 
-// var server = http.createServer( function(req, res){
-//     res.writeHead(202, {'Content-Type': 'text/html'});
-//     var response = routeToUrl(req.url);
-//     if(response !== undefined)
-//         response.pipe(res);
+// app.get('/', function(req, res) {
+//     res.send('this is home page');
+// });
+// app.get('/about', function(req, res) {
+//     res.send('this is about page');
+// });
+// app.get('/contact', function(req, res) {
+//     res.send('this is contact page');
 // });
 
-// server.listen(3000, () => {
-//     console.log('server is running on port: 3000');
+// app.listen(3000);
+
+/*********tutorial # 24***********Express route params********************** */
+// var express = require('express');
+
+// var app = express();
+
+// app.get('/', function(req, res) {
+//     res.send('this is home page');
+// });
+// app.get('/about', function(req, res) {
+//     res.send('this is about page');
+// });
+// app.get('/contact', function(req, res) {
+//     res.send('this is contact page');
+// });
+// app.get('/profile/:id', function(req, res) {
+//     res.send('u requested the profile for id ' + req.params.id);
+// });
+// app.get('/profile/:name', function(req, res) {
+//     res.send('u requested the profile with name ' + req.params.name);
 // });
 
-/*********tutorial # 23***********Express********************** */
+// app.listen(3000);
+
+/*********tutorial # 25+26***********template engines********************** */
 
 var express = require('express');
 
 var app = express();
 
+app.set('view engine', 'ejs'); // template k lie engine set kia
+
 app.get('/', function(req, res) {
-    res.send('this is home page');
+    res.sendFile(__dirname + '/error.html');
 });
 app.get('/about', function(req, res) {
-    res.send('this is about page');
+    res.sendFile(`${__dirname}/about.html`);
 });
 app.get('/contact', function(req, res) {
-    res.send('this is contact page');
+    res.sendFile(`${__dirname}/contact.html`);
+});
+// app.get('/profile/:id', function(req, res) {
+//     res.render('profile', {person: req.params.id});
+// });
+app.get('/profile/:name', function(req, res) {
+    var data = {age: 29, job: 'ninja', hobbies: ['eating', 'sleeping', 'coding']};
+    res.render('profile', {person: req.params.name, data: data});
 });
 
 app.listen(3000);
