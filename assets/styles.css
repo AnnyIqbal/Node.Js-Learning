@@ -10,8 +10,18 @@ body {
             font-style: italic;
             text-transform: lowercase;
             width: 50%;
-            margin: 21vh auto;
+            margin: 11vh auto;
         }
-        h3 {
-            text-transform: capitalize;
-        }
+h3 {
+   text-transform: capitalize;
+}
+input {
+    width: 75%;
+    line-height: 2em;
+    padding: 10px;
+}
+button {
+    background-color: black;
+    color: white;
+    padding: 15px;
+}

@@ -10,6 +10,13 @@
 <body>
     <% include partials/nav.ejs %>
     <h2> Contact Us! </h2>
-    <h3> Node.JS Routing </h3>
+    <%= qs.name %>
+    <form>
+        <input placeholder="name" type="text" value="<%= qs.name %>" />
+        <input placeholder="age" type="number" value="<%= qs.age %>" />
+        <input placeholder="email" type="email" />
+        <br>
+        <button type="submit"> SEND </button>
+    </form>
 </body>
 </html>

@@ -66,7 +66,7 @@
 
 // app.listen(3000);
 
-/*********tutorial # 27 + 28***********partial views + middleware to serve static files****************** */
+/*********tutorial # 29***********query strings****************** */
 
 
 var express = require('express');
@@ -86,7 +86,7 @@ app.get('/about', function(req, res) {
     res.render(`about`);
 });
 app.get('/contact', function(req, res) {
-    res.render(`contact`);
+    res.render(`contact`, {qs: req.query});
 });
 app.get('/profile/:name', function(req, res) {
     var data = {age: 29, job: 'ninja', hobbies: ['eating', 'sleeping', 'coding']};
